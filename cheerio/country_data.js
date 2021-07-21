@@ -1,13 +1,26 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
+const https = require("https");
 
-const sourceUrl = "http://covid-19.moh.gov.my/";
+const sourceUrl = "https://covid-19.moh.gov.my/";
 const now = new Date();
 
 const toNumber = (txt) => parseInt(txt.replace(/\D/g, "", 10));
 
 const getData = async () => {
-  const res = await axios.get(sourceUrl);
+  const instance = axios.create({
+    httpsAgent: new https.Agent({
+      rejectUnauthorized: false,
+    }),
+  });
+
+  instance.get(sourceUrl);
+
+  const agent = new https.Agent({
+    rejectUnauthorized: false,
+  });
+
+  const res = await axios.get(sourceUrl, { httpsAgent: agent });
   const $ = cheerio.load(res.data);
   const iframeUrl = $("#g-features script")
     .attr("id")
