@@ -32,7 +32,7 @@ const getData = async (postIdList) => {
         .children("tr")
         .first()
         .children("td")
-        .eq(1)
+        .eq(3)
         .children("strong")
         .first();
 
@@ -55,8 +55,8 @@ const getData = async (postIdList) => {
     if (index != 0 && index != tableSource.length - 1) {
       let stateData = {
         state: $$(elem).children().children().text(),
-        newCase: $$(elem).children().eq(1).text(),
-        overallCase: $$(elem).children().eq(2).text(),
+        newCase: $$(elem).children().eq(3).text(),
+        overallCase: $$(elem).children().eq(4).text(),
       };
       dataList.push(stateData);
     }
