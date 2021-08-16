@@ -11,7 +11,9 @@ const getStateData = require("./cheerio/state_data");
     const postIdList = await getPostId();
     const stateData = await getStateData(postIdList);
 
-    console.log("DG Health data success: ");
+    console.log(
+      stateData.length > 0 ? "DG Health data success: " : "DG Health data error"
+    );
     console.log(stateData);
     process.exit(0);
   } catch (err) {

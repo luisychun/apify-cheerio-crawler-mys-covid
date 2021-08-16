@@ -62,7 +62,7 @@ const getData = async (postIdList) => {
     }
   });
 
-  dataList.push(lastUpdatedAt);
+  dataList["lastUpdatedAtSource"] = lastUpdatedAt;
   return dataList;
 };
 
