@@ -32,11 +32,11 @@ const getData = async (postIdList) => {
         .children("tr")
         .first()
         .children("td")
-        .eq(3)
+        .eq(1)
         .children("strong")
         .first();
 
-      if (stateTitle.text().includes("BILANGAN KES BAHARU")) {
+      if (stateTitle.text().includes("JUMLAH KES")) {
         tableSource = $$(figure).children("table").find("tbody").children("tr");
       }
     });
@@ -55,8 +55,8 @@ const getData = async (postIdList) => {
     if (index != 0 && index != tableSource.length - 1) {
       let stateData = {
         state: $$(elem).children().children().text(),
-        newCase: $$(elem).children().eq(3).text(),
-        overallCase: $$(elem).children().eq(4).text(),
+        newCase: $$(elem).children().eq(1).text(),
+        // overallCase: $$(elem).children().eq(4).text(),
       };
       dataList.push(stateData);
     }
